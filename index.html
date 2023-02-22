@@ -42,7 +42,7 @@
       const camera=new THREE.PerspectiveCamera();
     }
    });
-   AFRAME.registerComponent('box',{
+   AFRAME.registerComponent('new-box',{
     init: function(){
       const materials=new THREE.MeshDepthMaterial({coloe: 0xff0000});
       const mesh=new THREE.Mesh(new THREE.BoxBufferGeometry(1,1,1),materials);
@@ -57,7 +57,7 @@
         <a-entity raycaster="objects: .clickable" cursor></a-entity>
       </a-entity>
     <a-text collider-check position="0 10 -19" scale="10 10 10" id="t1"></a-text>
-    <a-entity box class="clickable" id="cube" gps-projected-entity-place="latitude: 26.138521970305003; longitude: 91.79979070874991" ></a-entity>
+    <a-entity id="cube" new-box  gps-projected-entity-place="latitude: 26.138521970305003; longitude: 91.79979070874991" ></a-entity>
    
     <!--adding a transparent sky might make it work-->
 </a-scene>
