@@ -44,15 +44,16 @@
    });
    AFRAME.registerComponent('new-box',{
     init: function(){
-      const materials=new THREE.MeshDepthMaterial({coloe: 0xff0000});
-      const mesh=new THREE.Mesh(new THREE.BoxBufferGeometry(1,1,1),materials);
-      this.el.setObject3D('mesh',mesh);
+      const geometry=new THREE.BoxGeometry(10,10,10);
+        const material=new THREE.MeshDepthMaterial({color: 0xff0000});
+        const mesh=new THREE.Mesh(geometry,material);
+        this.el.setObject3D('mesh',mesh);
     }
    });
 </script>
 </head>
 <body>
-<a-scene pos new-camera look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5' vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+<a-scene new-camera look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5' vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
     <a-entity id="player" collider-check>
         <a-entity raycaster="objects: .clickable" cursor></a-entity>
       </a-entity>
