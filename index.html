@@ -24,16 +24,6 @@
     });
   }
 });
-   AFRAME.registerComponent('pos',{
-    init: function(){
-      const scene=document.querySelector('a-scene');
-      var cube=scene.querySelector('#cube').object3D;
-      cube.position.x=0;
-      cube.position.y=50;
-      cube.position.z=0;
-      cube.scale.set(10,10,10);
-    }
-   });
    AFRAME.registerComponent('new-camera',{
     init: function(){
       const camera=new THREE.PerspectiveCamera();
@@ -43,12 +33,16 @@
     init: function(){
       const materials=new THREE.MeshDepthMaterial({coloe: 0xff0000});
       const cube=new THREE.Mesh(new THREE.BoxBufferGeometry(1,1,1),materials);
+      cube.position.x=0;
+      cube.position.y=50;
+      cube.position.z=0;
+      cube.scale.set(10,10,10);
     }
    });
 </script>
 </head>
 <body>
-<a-scene pos new-camera look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5' vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+<a-scene new-camera look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5' vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
     <a-entity id="player" collider-check>
         <a-entity raycaster="objects: .clickable" cursor></a-entity>
       </a-entity>
