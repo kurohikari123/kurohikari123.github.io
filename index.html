@@ -27,7 +27,7 @@
    AFRAME.registerComponent('pos',{
     init: function(){
       const scene=document.querySelector('a-scene');
-      var cube=document.querySelector('#cube').object3D;
+      var cube=scene.querySelector('#cube').object3D;
       cube.position.x=0;
       cube.position.y=15;
       cube.position.z=0;
