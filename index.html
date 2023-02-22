@@ -24,41 +24,30 @@
     });
   }
 });
-  AFREAME.registerComponent('pos',{
+   AFRAME.registerComponent('pos',{
     init: function(){
       const scene=document.querySelector('a-scene');
-      var cube=scene.document.querySelector('#cube');
+      var cube=document.querySelector('#cube').object3D;
       cube.position.x=0;
-      cube.position.y=40;
+      cube.position.y=15;
       cube.position.z=0;
+      cube.scale.set(10,10,10);
     }
-  });
-
-
-
-
+   });
    AFRAME.registerComponent('new-camera',{
     init: function(){
       const camera=new THREE.PerspectiveCamera();
     }
    });
-   AFRAME.registerComponent('new-box',{
-    init: function(){
-      const geometry=new THREE.BoxGeometry(10,10,10);
-        const material=new THREE.MeshDepthMaterial({color: 0xff0000});
-        const mesh=new THREE.Mesh(geometry,material);
-        this.el.setObject3D('mesh',mesh);
-    }
-   });
 </script>
 </head>
 <body>
-<a-scene new-camera look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5' vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+<a-scene pos new-camera look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5' vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
     <a-entity id="player" collider-check>
         <a-entity raycaster="objects: .clickable" cursor></a-entity>
       </a-entity>
     <a-text collider-check position="0 10 -19" scale="10 10 10" id="t1"></a-text>
-    <a-entity id="cube" new-box  gps-projected-entity-place="latitude: 26.138521970305003; longitude: 91.79979070874991" ></a-entity>
+    <a-entity class="clickable" id="cube" material='color: red' geometry='primitive: box' gps-projected-entity-place="latitude: 26.138521970305003; longitude: 91.79979070874991" ></a-entity>
    
     <!--adding a transparent sky might make it work-->
 </a-scene>
